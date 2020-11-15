@@ -1,11 +1,11 @@
 import pandas as pd
 
-file = open('OutputedDataset.csv','a')
 
 
-Currency = pd.read_csv('../Database/Currency.csv')
+
+Currency = pd.read_csv('../Database/GBP.csv')
 GoldPrice= pd.read_excel('../Database/GoldPrice.xlsx')
-
+file = open('PoundResize.csv','a')
 
 CYear=Currency.iloc[:, 3:4].values
 CDate=Currency.iloc[:,1:2].values
@@ -39,17 +39,6 @@ for i in Glis:
     if len(i) == 4:
         file.write("{2},{1},{0},{3}\n".format(i[0],i[1],i[2],i[3]))
     else:
-        file.write("{2},{1},{0},{3}\n".format(i[0],i[1],i[2],0))
+        file.write("{2},{1},{0},{3}\n".format(i[0],i[1],i[2],115.00))
 
 file.close()
-
-
-
-
-
-
-
-
-
-
-
