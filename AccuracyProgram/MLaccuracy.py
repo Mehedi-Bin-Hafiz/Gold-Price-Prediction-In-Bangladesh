@@ -32,275 +32,195 @@ seventypercent=0.70   # training size 30%
 
 
 
-print("#############Logistic################")
+#naive bayes
+print("\n########## Naive Bayes algorithm ###########")
+gnb = GaussianNB()
 
-X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=thirtypercent, random_state=0)
-Logistic = LogisticRegressionCV(cv=5,max_iter=300)
-Logistic.fit(X_train,y_train)
-score=Logistic.score(X_test,y_test)
+X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
+gnb.fit(X_train, y_train)
+#Predict the response for test dataset
+pred = gnb.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
 print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
 
 
-X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=fourtypercent, random_state=0)
-Logistic = LogisticRegressionCV(cv=5,max_iter=300)
-Logistic.fit(X_train,y_train)
-score=Logistic.score(X_test,y_test)
+X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=fourtypercent, random_state=0)
+gnb.fit(X_train, y_train)
+#Predict the response for test dataset
+pred = gnb.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+gnb.fit(X_train, y_train)
+#Predict the response for test dataset
+pred = gnb.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+gnb.fit(X_train, y_train)
+#Predict the response for test dataset
+pred = gnb.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=seventypercent, random_state=0)
+gnb.fit(X_train, y_train)
+#Predict the response for test dataset
+pred = gnb.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+
+
+print("\n########## Decision tree algorithm ###########")
+
+dtc = DecisionTreeClassifier()
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+clf = dtc.fit(X_train,y_train)
+
+#Predict the response for test dataset
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
+clf = dtc.fit(X_train,y_train)
+
+#Predict the response for test dataset
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
 print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
 
 
 X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-Logistic = LogisticRegressionCV(cv=5,max_iter=300)
-Logistic.fit(X_train,y_train)
-score=Logistic.score(X_test,y_test)
+clf = dtc.fit(X_train,y_train)
+
+#Predict the response for test dataset
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+clf = dtc.fit(X_train,y_train)
+
+#Predict the response for test dataset
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
+clf = dtc.fit(X_train,y_train)
+
+#Predict the response for test dataset
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+
+
+print("\n########## SVM algorithm ###########")
+
+clf = svm.SVC(kernel='linear') # Linear Kernel
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+clf.fit(X_train, y_train)
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
+clf.fit(X_train, y_train)
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+clf.fit(X_train, y_train)
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
 print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
 
 
 X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-Logistic = LogisticRegressionCV(cv=5,max_iter=300)
-Logistic.fit(X_train,y_train)
-score=Logistic.score(X_test,y_test)
+clf.fit(X_train, y_train)
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
 print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
 
-
-X_train, X_test, y_train, y_test=train_test_split(x,y,test_size=seventypercent, random_state=0)
-Logistic = LogisticRegressionCV(cv=5,max_iter=300)
-Logistic.fit(X_train,y_train)
-score=Logistic.score(X_test,y_test)
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
+clf.fit(X_train, y_train)
+pred = clf.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
 print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
 
 
-###vvi## for logistic
-# Logistic = LogisticRegressionCV(cv=5,scoring='accuracy',random_state=0,n_jobs=-1,verbose=3,max_iter=100)
+print("\n########## Neural Network algorithm ###########")
 
-#knn
-#
-# print("########## KNN algorithm ###########")
-#
-# X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=thirtypercent, random_state=0)
-# knn=KNeighborsClassifier(n_neighbors=3,p=2)
-# knn.fit(X_train,y_train)
-# score=knn.score(X_test,y_test)
-# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=fourtypercent, random_state=0)
-# knn=KNeighborsClassifier(n_neighbors=3,p=2)
-# knn.fit(X_train,y_train)
-# score=knn.score(X_test,y_test)
-# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-# knn=KNeighborsClassifier(n_neighbors=3,p=2)
-# knn.fit(X_train,y_train)
-# score=knn.score(X_test, y_test)
-# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-# knn=KNeighborsClassifier(n_neighbors=3,p=2)
-# knn.fit(X_train,y_train)
-# score=knn.score(X_test, y_test)
-# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x,y,test_size=seventypercent, random_state=0)
-# knn=KNeighborsClassifier(n_neighbors=3,p=2)
-# knn.fit(X_train,y_train)
-# score=knn.score(X_test, y_test)
-# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-#
-# #naive bayes
-# print("\n########## Naive Bayes algorithm ###########")
-# gnb = GaussianNB()
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
-# gnb.fit(X_train, y_train)
-# #Predict the response for test dataset
-# pred = gnb.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=fourtypercent, random_state=0)
-# gnb.fit(X_train, y_train)
-# #Predict the response for test dataset
-# pred = gnb.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-# gnb.fit(X_train, y_train)
-# #Predict the response for test dataset
-# pred = gnb.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-# gnb.fit(X_train, y_train)
-# #Predict the response for test dataset
-# pred = gnb.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=seventypercent, random_state=0)
-# gnb.fit(X_train, y_train)
-# #Predict the response for test dataset
-# pred = gnb.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# print("\n########## Decision tree algorithm ###########")
-#
-# dtc = DecisionTreeClassifier()
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
-# clf = dtc.fit(X_train,y_train)
-#
-# #Predict the response for test dataset
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-# clf = dtc.fit(X_train,y_train)
-#
-# #Predict the response for test dataset
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-# clf = dtc.fit(X_train,y_train)
-#
-# #Predict the response for test dataset
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-# clf = dtc.fit(X_train,y_train)
-#
-# #Predict the response for test dataset
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
-# clf = dtc.fit(X_train,y_train)
-#
-# #Predict the response for test dataset
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# print("\n########## SVM algorithm ###########")
-#
-# clf = svm.SVC(kernel='linear') # Linear Kernel
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
-# clf.fit(X_train, y_train)
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-# clf.fit(X_train, y_train)
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-# clf.fit(X_train, y_train)
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-# clf.fit(X_train, y_train)
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
-# clf.fit(X_train, y_train)
-# pred = clf.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# print("\n########## Neural Network algorithm ###########")
-#
-# mpl = MLPClassifier(max_iter=1000,alpha=1,random_state=0)
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
-# mpl.fit(X_train, y_train)
-# pred = mpl.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
-# mpl.fit(X_train, y_train)
-# pred = mpl.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-# mpl.fit(X_train, y_train)
-# pred = mpl.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-# mpl.fit(X_train, y_train)
-# pred = mpl.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
-# mpl.fit(X_train, y_train)
-# pred = mpl.predict(X_test)
-# score=metrics.accuracy_score(y_test, pred)
-# print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
-#
-# print("\n########## Random Forest Algorithm ###########")
-# X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
-# clf=RandomForestClassifier(n_estimators=100)
-# clf.fit(X_train,y_train)
-# y_pred=clf.predict(X_test)
-# print("test size=30, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
-#
-#
-# X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=fourtypercent, random_state=0)
-# clf=RandomForestClassifier(n_estimators=100)
-# clf.fit(X_train,y_train)
-# y_pred=clf.predict(X_test)
-# print("test size=40, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
-# clf=RandomForestClassifier(n_estimators=100)
-# clf.fit(X_train,y_train)
-# y_pred=clf.predict(X_test)
-# print("test size=50, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
-# clf=RandomForestClassifier(n_estimators=100)
-# clf.fit(X_train,y_train)
-# y_pred=clf.predict(X_test)
-# print("test size=60, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
-#
-#
-# X_train, X_test, y_train, y_test=train_test_split(x,y,test_size=seventypercent, random_state=0)
-# clf=RandomForestClassifier(n_estimators=100)
-# clf.fit(X_train,y_train)
-# y_pred=clf.predict(X_test)
-# print("test size=70, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
+mpl = MLPClassifier(max_iter=1000,alpha=1,random_state=0)
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=thirtypercent, random_state=0)
+mpl.fit(X_train, y_train)
+pred = mpl.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=30, accuracy = {0:.2f}".format(100*score),"%")
+
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fourtypercent, random_state=0)
+mpl.fit(X_train, y_train)
+pred = mpl.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=40, accuracy = {0:.2f}".format(100*score),"%")
+
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+mpl.fit(X_train, y_train)
+pred = mpl.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=50, accuracy = {0:.2f}".format(100*score),"%")
+
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+mpl.fit(X_train, y_train)
+pred = mpl.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=60, accuracy = {0:.2f}".format(100*score),"%")
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=seventypercent, random_state=0)
+mpl.fit(X_train, y_train)
+pred = mpl.predict(X_test)
+score=metrics.accuracy_score(y_test, pred)
+print("test size=70, accuracy = {0:.2f}".format(100*score),"%")
+
+print("\n########## Random Forest Algorithm ###########")
+X_train, X_test, y_train, y_test=train_test_split(x, y,test_size=thirtypercent, random_state=0)
+clf=RandomForestClassifier(n_estimators=100)
+clf.fit(X_train,y_train)
+y_pred=clf.predict(X_test)
+print("test size=30, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
+
+
+X_train,X_test,y_train,y_test=train_test_split(x,y,test_size=fourtypercent, random_state=0)
+clf=RandomForestClassifier(n_estimators=100)
+clf.fit(X_train,y_train)
+y_pred=clf.predict(X_test)
+print("test size=40, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
+
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=fiftypercent, random_state=0)
+clf=RandomForestClassifier(n_estimators=100)
+clf.fit(X_train,y_train)
+y_pred=clf.predict(X_test)
+print("test size=50, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
+
+
+X_train, X_test, y_train, y_test=train_test_split(x, y, test_size=sixtypercent, random_state=0)
+clf=RandomForestClassifier(n_estimators=100)
+clf.fit(X_train,y_train)
+y_pred=clf.predict(X_test)
+print("test size=60, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
+
+
+X_train, X_test, y_train, y_test=train_test_split(x,y,test_size=seventypercent, random_state=0)
+clf=RandomForestClassifier(n_estimators=100)
+clf.fit(X_train,y_train)
+y_pred=clf.predict(X_test)
+print("test size=70, accuracy = {0:.2f}".format(100*metrics.accuracy_score(y_test, y_pred)),"%")
