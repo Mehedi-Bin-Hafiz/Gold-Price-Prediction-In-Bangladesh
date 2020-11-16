@@ -20,7 +20,7 @@ print(x)
 y = MainDatabase.iloc[ : , -1].values #dependent variables
 print(y)
 
-
+#mehedi
 
 #datauserate
 
